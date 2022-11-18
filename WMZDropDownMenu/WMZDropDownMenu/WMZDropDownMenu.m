@@ -557,6 +557,12 @@ static NSString* const notificationRemove = @"notificationRemove";
         }
         [self.delegate menu:self getAllSelectData:[NSArray arrayWithArray:allSelectArr]];
     }
+    [self hideAnimal:currentDrop.hideAnimalStyle view:self.dataView durtion:self.param.wMenuDurtion block:^{
+        @MenuStrongSelf(self)
+        if (self.delegate&&[self.delegate respondsToSelector:@selector(menu:closeWithBtn:index:)]) {
+            [self.delegate menu:self closeWithBtn:self.selectTitleBtn index:[self.titleArr indexOfObject:self.selectTitleBtn]];
+        }
+    }];
 }
 
 ///数据逻辑处理
